@@ -5,4 +5,5 @@ google.generativeai
 grpcio
 pillow
 requests
+jinja2
 git+https://github.com/ozgur/python-firebase
