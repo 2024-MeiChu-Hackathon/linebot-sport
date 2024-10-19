@@ -111,27 +111,28 @@ def handle_text_message(event):
         )
         reply_msg = response.text
     elif text == "我的頁面":
-        line_bot_api = MessagingApi(api_client)
-        # reply a button template
-        line_bot_api.reply_message(
-            ReplyMessageRequest(
-                reply_token=event.reply_token,
-                messages=[
-                    FlexButton(
-                        alt_text="我的頁面",
-                        title="我的頁面",
-                        text="我的頁面",
-                        actions=[
-                            {
-                                "type": "uri",
-                                "label": "我的頁面",
-                                "uri": "https://liff.line.me/1656540562-1QOJQX1V",
-                            }
-                        ],
-                    )
-                ],
+        with ApiClient(configuration) as api_client:
+            line_bot_api = MessagingApi(api_client)
+            # reply a button template
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[
+                        FlexButton(
+                            alt_text="我的頁面",
+                            title="我的頁面",
+                            text="我的頁面",
+                            actions=[
+                                {
+                                    "type": "uri",
+                                    "label": "我的頁面",
+                                    "uri": "https://liff.line.me/1656540562-1QOJQX1V",
+                                }
+                            ],
+                        )
+                    ],
+                )
             )
-        )
 
     else:
         messages.append({"role": "user", "parts": [text]})
