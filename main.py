@@ -48,8 +48,9 @@ async def read_root():
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", default=8080))
+    import uvicorn
+    port = int(os.environ.get('PORT', default=8000))
+    # activate debug mode when developer mode is on
     debug = True if os.environ.get(
-        "API_ENV", default="develop") == "develop" else False
-    logging.info("Application will start...")
-    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=debug)
+        'API_ENV', default='develop') == 'develop' else False
+    uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)
