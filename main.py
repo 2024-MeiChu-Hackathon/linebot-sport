@@ -48,7 +48,7 @@ async def read_root():
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", default=8080))
+    port = int(os.environ.get("PORT", default=80))
     debug = True if os.environ.get(
         "API_ENV", default="develop") == "develop" else False
     logging.info("Application will start...")
