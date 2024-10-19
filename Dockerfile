@@ -9,5 +9,5 @@ RUN pip install --upgrade pip
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-EXPOSE 80
+EXPOSE $PORT
 CMD uvicorn main:app --host=0.0.0.0 --port=$PORT
