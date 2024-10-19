@@ -62,7 +62,7 @@ async def handle_callback(request: Request):
         raise HTTPException(status_code=400, detail="Invalid signature")
 
 
-@router_line.post("/liff")
+@router_line.get("/liff")
 async def handle_liff(request: Request):
     data = await request.json()
     user_id = data["userId"]

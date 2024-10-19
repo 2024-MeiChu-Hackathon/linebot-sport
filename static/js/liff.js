@@ -16,5 +16,4 @@ function initializeApp() {
     h.innerHTML = 'Hello!!';
 }
 
-//使用 LIFF_ID 初始化 LIFF 應用
 initializeLiff('2006474745-g2rn5ZE4');
