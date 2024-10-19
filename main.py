@@ -11,6 +11,7 @@ if os.getenv("API_ENV") != "production":
 from fastapi import FastAPI, HTTPException, Request
 import uvicorn
 from fastapi.responses import RedirectResponse
+from fastapi.staticfiles import StaticFiles
 
 logging.basicConfig(level=os.getenv("LOG", "WARNING"))
 logger = logging.getLogger(__file__)
@@ -19,6 +20,9 @@ logger = logging.getLogger(__file__)
 app = FastAPI()
 app.include_router(routes.router_web)
 app.include_router(routes.router_line)
+app.include_router(routes.router_liff)
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 @app.get("/health")

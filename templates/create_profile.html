@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一起來運動</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', path='css/liff_create_profile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='bootstrap/bootstrap.min.css') }}">
+</head>
+
+<body>
+    LIFF
+    <div>
+        <div id="h"></div>
+    </div>
+
+    <img src="" alt=""  style="display: none;" id="profileImg">
+
+    <button type="button" class="btn btn-primary" id="btnSave">
+        我同意分享個人化資料
+    </button>
+    
+
+    <script src="{{ url_for('static', path='bootstrap/bootstrap.min.js') }}"></script>
+    <script charset="utf-8" src="{{ url_for('static', path='liff/sdk.js') }}"></script>
+    <script src="{{ url_for('static', path='jquery/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ url_for('static', path='js/liff_create_profile.js') }}"></script>
+
+</body>
+
+</html>

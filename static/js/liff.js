@@ -7,6 +7,7 @@ function initializeLiff(myLiffId) {
             initializeApp();
         })
         .catch((err) => {
+            print(err);
             alert('啟動失敗。');
         });
 }
