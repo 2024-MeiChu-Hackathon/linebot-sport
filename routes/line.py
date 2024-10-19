@@ -4,6 +4,7 @@ import os
 import sys
 from fastapi import APIRouter, HTTPException
 from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
 from firebase import firebase
 from fastapi.staticfiles import StaticFiles
 from utils import check_image, create_gcal_url, is_url_valid, shorten_url_by_reurl_api
@@ -62,7 +63,8 @@ async def handle_callback(request: Request):
         raise HTTPException(status_code=400, detail="Invalid signature")
 
 
-@router_line.get("/liff")
+@router_line.get("/liff", response_class=HTMLResponse)
+# plain html
 async def handle_liff(request: Request):
     data = await request.json()
     user_id = data["userId"]
@@ -110,9 +112,27 @@ def handle_text_message(event):
         reply_msg = response.text
     elif text == "我的頁面":
         line_bot_api = MessagingApi(api_client)
+        # reply a button template
         line_bot_api.reply_message(
-
+            ReplyMessageRequest(
+                reply_token=event.reply_token,
+                messages=[
+                    FlexButton(
+                        alt_text="我的頁面",
+                        title="我的頁面",
+                        text="我的頁面",
+                        actions=[
+                            {
+                                "type": "uri",
+                                "label": "我的頁面",
+                                "uri": "https://liff.line.me/1656540562-1QOJQX1V",
+                            }
+                        ],
+                    )
+                ],
+            )
         )
+
     else:
         messages.append({"role": "user", "parts": [text]})
         response = model.generate_content(messages)
