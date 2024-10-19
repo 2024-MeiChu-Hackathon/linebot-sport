@@ -17,6 +17,7 @@ from linebot.v3.messaging import (
     ApiClient,
     MessagingApi,
     MessagingApiBlob,
+    FlexButton
 )
 from linebot.v3.exceptions import InvalidSignatureError
 from linebot.v3.webhooks import MessageEvent, TextMessageContent, ImageMessageContent
@@ -61,6 +62,16 @@ async def handle_callback(request: Request):
         raise HTTPException(status_code=400, detail="Invalid signature")
 
 
+@router_line.post("/liff")
+async def handle_liff(request: Request):
+    data = await request.json()
+    user_id = data["userId"]
+    text = data["text"]
+
+    fdb = firebase.FirebaseApplication(firebase_url, None)
+    return "Hello " + user_id
+
+
 @handler.add(MessageEvent, message=TextMessageContent)
 def handle_text_message(event):
     logging.info(event)
@@ -97,6 +108,11 @@ def handle_text_message(event):
             f"Summary the following message in Traditional Chinese by less 5 list points. \n{messages}"
         )
         reply_msg = response.text
+    elif text == "我的頁面":
+        line_bot_api = MessagingApi(api_client)
+        line_bot_api.reply_message(
+
+        )
     else:
         messages.append({"role": "user", "parts": [text]})
         response = model.generate_content(messages)
