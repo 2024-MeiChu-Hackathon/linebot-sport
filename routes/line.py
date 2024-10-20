@@ -144,7 +144,7 @@ def handle_text_message(event):
 
     user_chat_path = f"chat/{user_id}"
     user_profile_path = f"profile/{user_id}"
-    user_now_path = f"profile/{user_id}"
+    user_now_path = f"now/{user_id}"
     # chat_state_path = f'state/{user_id}'
     conversation_data = fdb.get(user_chat_path, None)
     profile_data = fdb.get(user_profile_path, None)
