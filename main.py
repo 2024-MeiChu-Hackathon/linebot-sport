@@ -1,3 +1,6 @@
+from firebase_admin import credentials
+import firebase_admin
+import json
 import routes
 import logging
 import os
@@ -23,6 +26,10 @@ app.include_router(routes.router_line)
 app.include_router(routes.router_liff)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# service_account_info = json.loads(os.getenv('GOOGLE_CREDENTIALS'))
+# cred = credentials.Certificate(service_account_info)
+# firebase_admin.initialize_app(cred, {'databaseURL': os.getenv("FIREBASE_URL")})
 
 
 @app.get("/health")

@@ -6,4 +6,5 @@ grpcio
 pillow
 requests
 jinja2
+firebase_admin
 git+https://github.com/ozgur/python-firebase

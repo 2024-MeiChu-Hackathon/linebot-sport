@@ -1,32 +1,102 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="zh-Hant">
 
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>一起來運動</title>
-    
+    <title>大家來運動 ‧ 服務註冊</title>
     <link rel="stylesheet" href="{{ url_for('static', path='css/liff_create_profile.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='bootstrap/bootstrap.min.css') }}">
 </head>
 
 <body>
-    LIFF
-    <div>
-        <div id="h"></div>
+    <div id="divPlaceloader">
+        <lottie-player src="https://lottie.host/b9648f1d-4c96-4a12-b1ac-205d34468a40/P1XwKMFYyV.json"
+            background="##38c172" speed="1" style="height: 300px ;width: 100%;align-items: center;" loop autoplay
+            direction="1" mode="normal"></lottie-player>
     </div>
 
-    <img src="" alt=""  style="display: none;" id="profileImg">
 
-    <button type="button" class="btn btn-primary" id="btnSave">
-        我同意分享個人化資料
-    </button>
-    
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">大家來運動 ‧ 個人資料登錄</h1>
+        <form id="personalInfoForm">
+            <div class="mb-3">
+                <label for="name" class="form-label">姓名</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="mb-3">
+                <label for="city" class="form-label">縣市</label>
+                <select class="form-select" id="city">
+                    <option value="" selected disabled>選擇縣市</option>
+                    <option value="臺北市">臺北市</option>
+                    <option value="新北市">新北市</option>
+                    <option value="基隆市">基隆市</option>
+                    <option value="桃園市">桃園市</option>
+                    <option value="新竹縣">新竹縣</option>
+                    <option value="新竹市">新竹市</option>
+                    <option value="苗栗縣">苗栗縣</option>
+                    <option value="臺中市">臺中市</option>
+                    <option value="南投縣">南投縣</option>
+                    <option value="彰化縣">彰化縣</option>
+                    <option value="雲林縣">雲林縣</option>
+                    <option value="嘉義縣">嘉義縣</option>
+                    <option value="嘉義市">嘉義市</option>
+                    <option value="臺南市">臺南市</option>
+                    <option value="高雄市">高雄市</option>
+                    <option value="屏東縣">屏東縣</option>
+                    <option value="宜蘭縣">宜蘭縣</option>
+                    <option value="花蓮縣">花蓮縣</option>
+                    <option value="臺東縣">臺東縣</option>
+                    <option value="澎湖縣">澎湖縣</option>
+                    <option value="金門縣">金門縣</option>
+                    <option value="連江縣">連江縣</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="district" class="form-label">行政區</label>
+                <select class="form-select" id="district" disabled>
+                    <option value="" selected>請先選擇縣市</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="birthday" class="form-label">出生年月日</label>
+                <input type="date" class="form-control" id="birthday">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">生理性別</label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                        <label class="form-check-label" for="male">男</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                        <label class="form-check-label" for="female">女</label>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="school" class="form-label">學校</label>
+                <input type="text" class="form-control" id="school" placeholder="(選填)">
+            </div>
+            <div class="mb-3">
+                <label for="department" class="form-label">系級</label>
+                <input type="text" class="form-control" id="department" placeholder="(選填)">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="agreeTerms">
+                <label class="form-check-label" for="agreeTerms">我同意分享個人化資料</label>
+            </div>
+            <button type="button" class="btn btn-success" id="submitBtn" disabled>送出</button>
+        </form>
+    </div>
 
     <script src="{{ url_for('static', path='bootstrap/bootstrap.min.js') }}"></script>
     <script charset="utf-8" src="{{ url_for('static', path='liff/sdk.js') }}"></script>
     <script src="{{ url_for('static', path='jquery/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ url_for('static', path='js/liff_create_profile.js') }}"></script>
-
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <footer class="fixed-bottom">大家來運動 Let's Exercise 2024@MeiChu Hackathon.</footer>
 </body>
 
 </html>
